@@ -44,6 +44,10 @@ class _SurveyState extends State<Survey> {
     super.dispose();
   }
 
+  double calculate() {
+    return (_doing + _sleep + 6 - _stress)/15;
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -183,6 +187,7 @@ class _SurveyState extends State<Survey> {
           ElevatedButton(
               onPressed: () {
                 print('Answer: ${_textlaugh.text}');
+                print(calculate());
                 // Navigate to the second page
                 Navigator.push(
                   context,

@@ -17,11 +17,11 @@ class _Settings extends State<Settings> {
   int _selectedIndex = 4;
 
   static List<Widget> _widgetOptions = <Widget>[
-    Text('Survey'),
+    Survey(),
     Communities(),
     MyHomePage(title: 'Home'), // Placeholder for homepage
     Challenges(),
-    Settings(),
+    Text('Settings'),
   ];
 
   void _onItemTapped(int index) {
@@ -201,11 +201,11 @@ class _ProfilePageState extends State<ProfilePage> {
   int _selectedIndex = 4;
 
   static List<Widget> _widgetOptions = <Widget>[
-    Text('Survey'),
+    Survey(),
     Communities(),
     MyHomePage(title: 'Home'), // Placeholder for homepage
     Challenges(),
-    Settings(),
+    Text('Settings'),
   ];
 
   void _onItemTapped(int index) {
@@ -388,11 +388,11 @@ class _HelpPage extends State<HelpPage> {
   int _selectedIndex = 4;
 
   static List<Widget> _widgetOptions = <Widget>[
-    Text('Survey'),
+    Survey(),
     Communities(),
     MyHomePage(title: 'Home'), // Placeholder for homepage
     Challenges(),
-    Settings(),
+    Text('Settings'),
   ];
 
 
@@ -539,11 +539,11 @@ class _UsefulResourcesPage extends State<UsefulResourcesPage> {
   int _selectedIndex = 4;
 
   static List<Widget> _widgetOptions = <Widget>[
-    Text('Survey'),
+    Survey(),
     Communities(),
     MyHomePage(title: 'Home'), // Placeholder for homepage
     Challenges(),
-    Settings(),
+    Text('Settings'),
   ];
 
 
