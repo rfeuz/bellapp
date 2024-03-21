@@ -4,14 +4,12 @@ import 'main.dart';
 import 'communities.dart';
 import 'survey.dart';
 import 'challenges.dart';
-
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
   @override
   _Settings createState() => _Settings();
 }
-
 
 class _Settings extends State<Settings> {
   int _selectedIndex = 4;
@@ -66,7 +64,7 @@ class _Settings extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text('Profile'),
         backgroundColor:
             Colors.green, // Setting background color of the app bar to green
       ),
@@ -82,7 +80,6 @@ class _Settings extends State<Settings> {
                   context,
                   MaterialPageRoute(builder: (context) => ProfilePage()),
                 );
-                // Navigate to the 'Habits' page
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(vertical: 20.0),
@@ -90,8 +87,7 @@ class _Settings extends State<Settings> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    '   Profile',
+                  Text('Profile',
                     textAlign: TextAlign.left,
                     style: TextStyle(fontSize: 18),
                   ),
