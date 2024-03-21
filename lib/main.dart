@@ -1,3 +1,4 @@
+import 'package:bellapp/data.dart';
 import 'package:flutter/material.dart';
 import 'communities.dart';
 import 'settings.dart';
@@ -175,7 +176,9 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {}, // Add functionality here
+                  onPressed: () {
+                    FitnessData.NumberOfSteps_goal = 25;
+                  }, // Add functionality here
                   child: const Text('Button 1'),
                 ),
                 const SizedBox(width: 10),
