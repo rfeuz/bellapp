@@ -87,7 +87,29 @@ class _Settings extends State<Settings> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Profile',
+                  Text('   Personal Information',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  Icon(Icons.arrow_forward),
+                ],
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(vertical: 20.0),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('   My Diary',
                     textAlign: TextAlign.left,
                     style: TextStyle(fontSize: 18),
                   ),
@@ -120,7 +142,6 @@ class _Settings extends State<Settings> {
                 ],
               ),
             ),
-
             SizedBox(height: 20),
             // Slider for help
             ElevatedButton(
@@ -180,7 +201,6 @@ class _Settings extends State<Settings> {
     );
   }
 }
-
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -388,8 +408,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-
-
 class HelpPage extends StatefulWidget {
   @override
   _HelpPage createState() => _HelpPage();
@@ -405,7 +423,6 @@ class _HelpPage extends State<HelpPage> {
     Challenges(),
     Text('Settings'),
   ];
-
 
   void _onItemTapped(int index) {
     setState(() {
@@ -444,7 +461,6 @@ class _HelpPage extends State<HelpPage> {
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -537,18 +553,13 @@ class _HelpPage extends State<HelpPage> {
   }
 }
 
-
-
 class UsefulResourcesPage extends StatefulWidget {
   @override
   _UsefulResourcesPage createState() => _UsefulResourcesPage();
 }
 
-
 class _UsefulResourcesPage extends State<UsefulResourcesPage> {
-
   int _selectedIndex = 4;
-
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
@@ -556,8 +567,6 @@ class _UsefulResourcesPage extends State<UsefulResourcesPage> {
     Challenges(),
     Text('Settings'),
   ];
-
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -595,7 +604,6 @@ class _UsefulResourcesPage extends State<UsefulResourcesPage> {
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
