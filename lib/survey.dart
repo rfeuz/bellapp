@@ -174,12 +174,6 @@ class _SurveyState extends State<Survey> {
           TextField(
             controller: _textgreatful,
           ),
-          ElevatedButton(
-              onPressed: () {
-                print('Answer: ${_textgreatful.text}');
-              },
-              child: Text('Submit')
-          ),
           Text('What made you laugh today'),
           TextField(
             controller: _textlaugh,
@@ -187,6 +181,7 @@ class _SurveyState extends State<Survey> {
           ElevatedButton(
               onPressed: () {
                 print('Answer: ${_textlaugh.text}');
+                print('Answer: ${_textgreatful.text}');
                 print(calculate());
                 // Navigate to the second page
                 Navigator.push(

@@ -193,8 +193,8 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   String _name = 'test';
-  double _age = 37;
-  double _stepgoal = 37;
+  int _age = 37;
+  int _stepgoal = 37;
   double _sleepgoal = 37;
   String _country = 'test';
   String _language = 'test';
