@@ -47,3 +47,10 @@ class GlobalScores {
 class NumberOfPoints {
   static int NumberOfPointsSurvey = 10;
 }
+
+class LunchBuddy {
+  static String Name = 'Broddy Buddy';
+  static String Time = '12:15 - 12:45';
+  static String Departement = 'Verwaltung';
+  static String Language = 'German';
+}

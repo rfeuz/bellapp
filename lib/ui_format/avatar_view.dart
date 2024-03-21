@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../theme.dart';
 
-class RunningView extends StatelessWidget {
+class AvatarView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const RunningView({Key? key, this.animationController, this.animation})
+  const AvatarView({Key? key, this.animationController, this.animation})
       : super(key: key);
 
   @override

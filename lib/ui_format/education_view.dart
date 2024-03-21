@@ -1,11 +1,11 @@
+import 'theme.dart';
 import 'package:flutter/material.dart';
-import '../theme.dart';
 
-class RunningView extends StatelessWidget {
+class EducationView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
 
-  const RunningView({Key? key, this.animationController, this.animation})
+  const EducationView({Key? key, this.animationController, this.animation})
       : super(key: key);
 
   @override
