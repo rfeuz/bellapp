@@ -3,6 +3,7 @@ import 'main.dart';
 import 'communities.dart';
 import 'settings.dart';
 import 'challenges.dart';
+import 'scoreboard.dart';
 import 'survey.dart';
 
 class stepchallenge extends StatefulWidget {
@@ -11,7 +12,6 @@ class stepchallenge extends StatefulWidget {
 }
 
 class _stepchallenge extends State<stepchallenge> {
-
   int _selectedIndex = 3;
 
   static List<Widget> _widgetOptions = <Widget>[
@@ -74,7 +74,7 @@ class _stepchallenge extends State<stepchallenge> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => stepchallenge()),
+                  MaterialPageRoute(builder: (context) => Scoreboard()),
                 );
               },
               child: Container(
