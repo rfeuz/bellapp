@@ -1,97 +1,154 @@
-import 'ui_view/area_list_view.dart';
-import 'ui_view/running_view.dart';
-import 'ui_view/title_view.dart';
-import 'ui_view/workout_view.dart';
+import 'package:bellapp/data.dart';
 import 'package:flutter/material.dart';
+import 'communities.dart';
+import 'settings.dart';
+import 'survey.dart';
+import 'challenges.dart';
+import 'ui_format/score_view.dart';
+import 'ui_format/avatar_view.dart';
+import 'ui_format/theme.dart';
+import 'ui_format/title_view.dart';
+import 'ui_format/education_view.dart';
 
-import '../theme.dart';
-
-class EducationScreen extends StatefulWidget {
-  const EducationScreen({Key? key, this.animationController}) : super(key: key);
-
-  final AnimationController? animationController;
-  @override
-  _EducationScreenState createState() => _EducationScreenState();
+void main() {
+  runApp(const MyApp());
 }
 
-class _EducationScreenState extends State<EducationScreen>
-    with TickerProviderStateMixin {
-  Animation<double>? topBarAnimation;
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key, this.animationController}) : super(key: key);
+  final AnimationController? animationController;
 
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Home',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+      ),
+      home: MyHomePage(animationController: animationController),
+    );
+  }
+}
+
+void calculate_health_score() {
+  GlobalScores.FitnessScore = ((1/3)*100*((FitnessData.NumberOfSteps_actual/FitnessData.NumberOfSteps_goal)+(FitnessData.NumberOfFloors_actual/FitnessData.NumberOfFloors_goal)+(FitnessData.HoursOfSleep_actual/FitnessData.NumberOfSteps_goal))).toInt();
+  GlobalScores.FoodScore = (100*FoodData.FoodHealthyness_actual).toInt();
+  GlobalScores.MindScore = (100*MindData.GeneralMindScore_actual).toInt();
+}
+
+// Define the arguments class
+class MyPageArguments {
+  final String message;
+  MyPageArguments(this.message);
+}
+/***
+    class Initial extends StatefulWidget {
+    const Initial({Key? key, required this.title});
+    final String title;
+    @override
+    State<Initial> createState() => _InitialState();
+    }
+
+    class _InitialState extends State<MyHomePage>
+    with TickerProviderStateMixin {
+    AnimationController? animationController;
+    Widget tabBody = Container(
+    color: FitnessAppTheme.background,
+    );
+
+    }
+ ***/
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, this.animationController}) : super(key: key);
+  final AnimationController? animationController;
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage>
+    with TickerProviderStateMixin {
+  AnimationController? animationController;
+  Widget tabBody = Container(
+    color: FitnessAppTheme.background,
+  );
+  Animation<double>? topBarAnimation;
   List<Widget> listViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
   double topBarOpacity = 0.0;
 
+  int _selectedIndex = 2;
+  int _score_mainboard = GlobalScores.PointScore;
+
+
   @override
   void initState() {
-    topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-            parent: widget.animationController!,
-            curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
-    addAllListData();
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 600), vsync: this);
+    tabBody = Communities(animationController: animationController);
+    super.initState();
+    // Initialize the state variables with the provided userData
+    setState(() {
+      _selectedIndex = 2;
+      _score_mainboard = GlobalScores.PointScore;
+      calculate_health_score();
+    });
+    print('Welcome');
+  }
 
-    scrollController.addListener(() {
-      if (scrollController.offset >= 24) {
-        if (topBarOpacity != 1.0) {
-          setState(() {
-            topBarOpacity = 1.0;
-          });
-        }
-      } else if (scrollController.offset <= 24 &&
-          scrollController.offset >= 0) {
-        if (topBarOpacity != scrollController.offset / 24) {
-          setState(() {
-            topBarOpacity = scrollController.offset / 24;
-          });
-        }
-      } else if (scrollController.offset <= 0) {
-        if (topBarOpacity != 0.0) {
-          setState(() {
-            topBarOpacity = 0.0;
-          });
-        }
+  @override
+  void dispose() {
+    animationController?.dispose();
+    super.dispose();
+  }
+
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Survey(),
+    Communities(),
+    Text('Home'), // Placeholder for homepage
+    Challenges(),
+    Settings(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (_selectedIndex) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Survey()),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Communities()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyHomePage()),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Challenges()),
+          );
+          break;
+        case 4:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Settings()),
+          );
+          break;
       }
     });
-    super.initState();
-  }
-
-  void addAllListData() {
-    const int count = 5;
-
-    listViews.add(
-      WorkoutView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-            Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-    listViews.add(
-      RunningView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController!,
-            curve:
-            Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController!,
-      ),
-    );
-
-    listViews.add(
-      AreaListView(
-        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(
-                parent: widget.animationController!,
-                curve: Interval((1 / count) * 5, 1.0,
-                    curve: Curves.fastOutSlowIn))),
-        mainScreenAnimationController: widget.animationController!,
-      ),
-    );
-  }
-
-  Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 50));
-    return true;
   }
 
   @override
@@ -99,45 +156,65 @@ class _EducationScreenState extends State<EducationScreen>
     return Container(
       color: FitnessAppTheme.background,
       child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            getMainListViewUI(),
-            getAppBarUI(),
-            SizedBox(
-              height: MediaQuery.of(context).padding.bottom,
-            )
+        body: FutureBuilder<bool>(
+          future: getData(),
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            if (!snapshot.hasData) {
+              return const SizedBox();
+            } else {
+              return Stack(
+                children: <Widget>[
+                  tabBody,
+                  getAppBarUI(),
+                  SizedBox(
+                    height: MediaQuery.of(context).padding.bottom,
+                  )
+                ],
+              );
+            }
+          },
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.blueGrey, // Change the color here
+          selectedItemColor: Colors.blueAccent, // Change the selected item color here
+          unselectedItemColor: Colors.grey, // Change the unselected item color here
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.assignment),
+              label: 'Survey',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.group),
+              label: 'Communities',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.star),
+              label: 'Challenges',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
           ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: const Icon(Icons.person, size: 50.0),
+          backgroundColor: Colors.blue,
         ),
       ),
     );
   }
 
-  Widget getMainListViewUI() {
-    return FutureBuilder<bool>(
-      future: getData(),
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-        if (!snapshot.hasData) {
-          return const SizedBox();
-        } else {
-          return ListView.builder(
-            controller: scrollController,
-            padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height +
-                  MediaQuery.of(context).padding.top +
-                  24,
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
-            ),
-            itemCount: listViews.length,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext context, int index) {
-              widget.animationController?.forward();
-              return listViews[index];
-            },
-          );
-        }
-      },
-    );
+  Future<bool> getData() async {
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    return true;
   }
 
   Widget getAppBarUI() {
@@ -269,4 +346,5 @@ class _EducationScreenState extends State<EducationScreen>
       ],
     );
   }
+
 }

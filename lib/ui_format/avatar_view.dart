@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme.dart';
+import 'theme.dart';
 
 class AvatarView extends StatelessWidget {
   final AnimationController? animationController;

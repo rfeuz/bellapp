@@ -20,7 +20,7 @@ class _ScoreboardState extends State<Scoreboard> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(title: 'Home'),
+    MyHomePage(),
     Text('Survey'),
     Settings(),
   ];
@@ -45,7 +45,7 @@ class _ScoreboardState extends State<Scoreboard> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+            MaterialPageRoute(builder: (context) => MyHomePage()),
           );
           break;
         case 3:
