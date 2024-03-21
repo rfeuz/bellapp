@@ -1,8 +1,67 @@
 // Settings.dart
 
+import 'main.dart';
+import 'communities.dart';
+import 'survey.dart';
+import 'challenges.dart';
+
 import 'package:flutter/material.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
+  @override
+  _Settings createState() => _Settings();
+}
+
+
+class _Settings extends State<Settings> {
+  int _selectedIndex = 4;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Text('Survey'),
+    Communities(),
+    MyHomePage(title: 'Home'), // Placeholder for homepage
+    Challenges(),
+    Settings(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (_selectedIndex) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Survey()),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Communities()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Challenges()),
+          );
+          break;
+        case 4:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Settings()),
+          );
+          break;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,17 +152,99 @@ class Settings extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blueGrey, // Change the color here
+        selectedItemColor: Colors.blueAccent, // Change the selected item color here
+        unselectedItemColor: Colors.grey, // Change the unselected item color here
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Survey',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Communities',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Challenges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
 
-class ProfilePage extends StatelessWidget {
+
+class ProfilePage extends StatefulWidget {
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   String _name = 'test';
   double _age = 37;
   double _stepgoal = 37;
   double _sleepgoal = 37;
   String _country = 'test';
   String _language = 'test';
+  int _selectedIndex = 4;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Text('Survey'),
+    Communities(),
+    MyHomePage(title: 'Home'), // Placeholder for homepage
+    Challenges(),
+    Settings(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (_selectedIndex) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Survey()),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Communities()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Challenges()),
+          );
+          break;
+        case 4:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Settings()),
+          );
+          break;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -203,11 +344,96 @@ class ProfilePage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blueGrey, // Change the color here
+        selectedItemColor: Colors.blueAccent, // Change the selected item color here
+        unselectedItemColor: Colors.grey, // Change the unselected item color here
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Survey',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Communities',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Challenges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
 
-class HelpPage extends StatelessWidget {
+
+
+class HelpPage extends StatefulWidget {
+  @override
+  _HelpPage createState() => _HelpPage();
+}
+
+class _HelpPage extends State<HelpPage> {
+  int _selectedIndex = 4;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Text('Survey'),
+    Communities(),
+    MyHomePage(title: 'Home'), // Placeholder for homepage
+    Challenges(),
+    Settings(),
+  ];
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (_selectedIndex) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Survey()),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Communities()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Challenges()),
+          );
+          break;
+        case 4:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Settings()),
+          );
+          break;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -267,11 +493,98 @@ class HelpPage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blueGrey, // Change the color here
+        selectedItemColor: Colors.blueAccent, // Change the selected item color here
+        unselectedItemColor: Colors.grey, // Change the unselected item color here
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Survey',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Communities',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Challenges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
 
-class UsefulResourcesPage extends StatelessWidget {
+
+
+class UsefulResourcesPage extends StatefulWidget {
+  @override
+  _UsefulResourcesPage createState() => _UsefulResourcesPage();
+}
+
+
+class _UsefulResourcesPage extends State<UsefulResourcesPage> {
+
+  int _selectedIndex = 4;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Text('Survey'),
+    Communities(),
+    MyHomePage(title: 'Home'), // Placeholder for homepage
+    Challenges(),
+    Settings(),
+  ];
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (_selectedIndex) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Survey()),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Communities()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Challenges()),
+          );
+          break;
+        case 4:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Settings()),
+          );
+          break;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -330,6 +643,35 @@ class UsefulResourcesPage extends StatelessWidget {
             // Slider for help
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blueGrey, // Change the color here
+        selectedItemColor: Colors.blueAccent, // Change the selected item color here
+        unselectedItemColor: Colors.grey, // Change the unselected item color here
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Survey',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Communities',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Challenges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
