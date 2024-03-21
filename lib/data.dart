@@ -31,3 +31,8 @@ class ProfileInformation {
   static String Language = 'German';
   static String MyDiary = '-';
 }
+
+class GlobalVariables {
+  static bool FirstLogin = true;
+  static bool DailySurvey = false;
+}
