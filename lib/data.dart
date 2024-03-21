@@ -32,7 +32,18 @@ class ProfileInformation {
   static String MyDiary = '-';
 }
 
-class GlobalVariables {
+class GlobalFlags {
   static bool FirstLogin = true;
   static bool DailySurvey = false;
+}
+
+class GlobalScores {
+  static int FoodScore = 0;
+  static int FitnessScore = 0;
+  static int MindScore = 0;
+  static int PointScore = 0;
+}
+
+class NumberOfPoints {
+  static int NumberOfPointsSurvey = 10;
 }
