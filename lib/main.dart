@@ -1,7 +1,7 @@
 import 'package:bellapp/communities.dart';
 import 'package:flutter/material.dart';
 import 'communities.dart';
-import 'profil.dart';
+import 'settings.dart';
 import 'survey.dart';
 import 'challenges.dart';
 
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static List<Widget> _widgetOptions = <Widget>[
     Text('Home'), // Placeholder for homepage
     Communities(),
-    Profil(),
+    Settings(),
     Survey(),
     Challenges(),
   ];
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Profil()),
+            MaterialPageRoute(builder: (context) => Settings()),
           );
           break;
         case 3:
@@ -169,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Settings',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment),
