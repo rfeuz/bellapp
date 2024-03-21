@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
+import 'communities.dart';
+import 'settings.dart';
+import 'challenges.dart';
 
 class Survey extends StatefulWidget {
   @override
   _SurveyState createState() => _SurveyState();
+}
+
+class UserData {
+  final double doing;
+  final double sleep;
+  final double stress;
+  final double fruit;
+  final double food;
+
+  UserData(this.doing, this.sleep, this.stress, this.fruit, this.food);
 }
 
 class _SurveyState extends State<Survey> {
@@ -11,16 +25,61 @@ class _SurveyState extends State<Survey> {
   double _stress = 1;
   double _fruit = 1;
   double _food = 1;
+  int _selectedIndex = 0;
   final _textgreatful = TextEditingController();
   final _textlaugh = TextEditingController();
 
-
+  static List<Widget> _widgetOptions = <Widget>[
+    Text('Survey'),
+    Communities(),
+    MyHomePage(title: 'Home'), // Placeholder for homepage
+    Challenges(),
+    Settings(),
+  ];
 
   @override
   void dispose() {
     _textgreatful.dispose(); // Don't forget to dispose the controller when not needed
     _textlaugh.dispose(); // Don't forget to dispose the controller when not needed
     super.dispose();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (_selectedIndex) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Survey()),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Communities()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Challenges()),
+          );
+          break;
+        case 4:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Settings()),
+          );
+          break;
+      }
+    });
   }
 
   //_calculate() {
@@ -124,10 +183,45 @@ class _SurveyState extends State<Survey> {
           ElevatedButton(
               onPressed: () {
                 print('Answer: ${_textlaugh.text}');
+                // Navigate to the second page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+                );
               },
+
               child: Text('Submit')
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blueGrey, // Change the color here
+        selectedItemColor: Colors.blueAccent, // Change the selected item color here
+        unselectedItemColor: Colors.grey, // Change the unselected item color here
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Survey',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Communities',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Challenges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
 
     );

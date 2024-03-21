@@ -1,4 +1,3 @@
-import 'package:bellapp/communities.dart';
 import 'package:flutter/material.dart';
 import 'communities.dart';
 import 'settings.dart';
@@ -15,13 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Home',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'BELL Homepage'),
+      home: const MyHomePage(title: 'Home'),
     );
   }
 }
@@ -35,16 +34,43 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+
+
+// Define the arguments class
+class MyPageArguments {
+  final String message;
+
+  MyPageArguments(this.message);
+}
+
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
+  double _doing = 0;
+  double _sleep = 0;
+  double _stress = 0;
+  double _fruit = 0;
+  double _food = 0;
+  int _yourscore = 1352;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the state variables with the provided userData
+    setState(() {
+      _selectedIndex = 2;
+    });
+    print('Welcome');
+  }
+
 
   static List<Widget> _widgetOptions = <Widget>[
-    Text('Home'), // Placeholder for homepage
-    Communities(),
-    Settings(),
     Survey(),
+    Communities(),
+    Text('Home'), // Placeholder for homepage
     Challenges(),
+    Settings(),
   ];
 
   void _incrementCounter() {
@@ -66,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
         case 0:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+            MaterialPageRoute(builder: (context) => Survey()),
           );
           break;
         case 1:
@@ -78,19 +104,19 @@ class _MyHomePageState extends State<MyHomePage> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
           );
           break;
         case 3:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Survey()),
+            MaterialPageRoute(builder: (context) => Challenges()),
           );
           break;
         case 4:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Challenges()),
+            MaterialPageRoute(builder: (context) => Settings()),
           );
           break;
       }
@@ -107,14 +133,22 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            const SizedBox(height: 40),
             const Text(
-              'You have pushed the button this many times:',
+              'Your Score',
+              style: TextStyle(
+                fontSize: 40, // Change the font size here
+              ),
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline6,
+              '$_yourscore',
+              style: TextStyle(
+                fontSize: 60, // Change the font size here
+                fontFamily: 'Oswald', // Change 'YourFontFamily' to the desired font family
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
@@ -128,8 +162,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _incrementCounter,
-              child: const Text('Increment'),
+              onPressed: _resetCounter,
+              child: const Text('Update Score'),
             ),
             const SizedBox(height: 10),
             ElevatedButton(
@@ -160,24 +194,24 @@ class _MyHomePageState extends State<MyHomePage> {
         unselectedItemColor: Colors.grey, // Change the unselected item color here
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.assignment),
+            label: 'Survey',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.group),
             label: 'Communities',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Settings',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.assignment),
-            label: 'Survey',
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.star),
             label: 'Challenges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           ),
         ],
         currentIndex: _selectedIndex,
