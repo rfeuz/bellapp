@@ -36,13 +36,11 @@ class _SurveyState extends State<Survey> {
     super.dispose();
   }
 
-  double calculate() {
-    return (_doing + _sleep + 6 - _stress)/15;
-  }
 
   void output_to_data() {
-    MindData.GeneralMindScore_actual = calculate();
+    MindData.GeneralMindScore_actual = (_doing + _sleep + 6 - _stress)/15;
     FoodData.FoodHealthyness_actual = (_food + _fruit)/10;
+    GlobalScores.PointScore += NumberOfPoints.NumberOfPointsSurvey;
   }
 
   void _onItemTapped(int index) {

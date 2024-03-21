@@ -35,7 +35,11 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-
+void calculate_health_score() {
+  GlobalScores.FitnessScore = ((1/3)*100*((FitnessData.NumberOfSteps_actual/FitnessData.NumberOfSteps_goal)+(FitnessData.NumberOfFloors_actual/FitnessData.NumberOfFloors_goal)+(FitnessData.HoursOfSleep_actual/FitnessData.NumberOfSteps_goal))).toInt();
+  GlobalScores.FoodScore = (100*FoodData.FoodHealthyness_actual).toInt();
+  GlobalScores.MindScore = (100*MindData.GeneralMindScore_actual).toInt();
+}
 
 // Define the arguments class
 class MyPageArguments {
@@ -46,14 +50,8 @@ class MyPageArguments {
 
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   int _selectedIndex = 2;
-  double _doing = 0;
-  double _sleep = 0;
-  double _stress = 0;
-  double _fruit = 0;
-  double _food = 0;
-  int _yourscore = 1352;
+  int _score_mainboard = GlobalScores.PointScore;
 
   @override
   void initState() {
@@ -61,6 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // Initialize the state variables with the provided userData
     setState(() {
       _selectedIndex = 2;
+      _score_mainboard = GlobalScores.PointScore;
+      calculate_health_score();
     });
     print('Welcome');
   }
@@ -73,18 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
     Challenges(),
     Settings(),
   ];
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -144,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Text(
-              '$_yourscore',
+              '$_score_mainboard',
               style: TextStyle(
                 fontSize: 60, // Change the font size here
                 fontFamily: 'Oswald', // Change 'YourFontFamily' to the desired font family
@@ -152,42 +140,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Communities()),
-                );
-              },
-              child: const Text('Go to New Screen'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _resetCounter,
-              child: const Text('Update Score'),
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: _resetCounter,
-              child: const Text('Reset'),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    FitnessData.NumberOfSteps_goal = 25;
-                  }, // Add functionality here
-                  child: const Text('Button 1'),
-                ),
-                const SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: () {}, // Add functionality here
-                  child: const Text('Button 2'),
-                ),
-              ],
-            ),
           ],
         ),
       ),
@@ -221,9 +173,9 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () {},
+        child: const Icon(Icons.person, size: 50.0),
+        backgroundColor: Colors.blue,
       ),
     );
   }
