@@ -3,21 +3,13 @@ import 'main.dart';
 import 'communities.dart';
 import 'settings.dart';
 import 'challenges.dart';
+import 'data.dart';
 
 class Survey extends StatefulWidget {
   @override
   _SurveyState createState() => _SurveyState();
 }
 
-class UserData {
-  final double doing;
-  final double sleep;
-  final double stress;
-  final double fruit;
-  final double food;
-
-  UserData(this.doing, this.sleep, this.stress, this.fruit, this.food);
-}
 
 class _SurveyState extends State<Survey> {
   double _doing = 1;
@@ -46,6 +38,11 @@ class _SurveyState extends State<Survey> {
 
   double calculate() {
     return (_doing + _sleep + 6 - _stress)/15;
+  }
+
+  void output_to_data() {
+    MindData.GeneralMindScore_actual = calculate();
+    FoodData.FoodHealthyness_actual = (_food + _fruit)/10;
   }
 
   void _onItemTapped(int index) {
@@ -186,8 +183,9 @@ class _SurveyState extends State<Survey> {
           ),
           ElevatedButton(
               onPressed: () {
+                output_to_data();
                 print('Answer: ${_textlaugh.text}');
-                print(calculate());
+                print('Food-Score overall ${FoodData.FoodHealthyness_actual}');
                 // Navigate to the second page
                 Navigator.push(
                   context,

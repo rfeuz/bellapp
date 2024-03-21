@@ -1,5 +1,5 @@
 // Settings.dart
-
+import 'data.dart';
 import 'main.dart';
 import 'communities.dart';
 import 'survey.dart';
@@ -192,13 +192,28 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  String _name = 'test';
-  double _age = 37;
-  double _stepgoal = 37;
-  double _sleepgoal = 37;
-  String _country = 'test';
-  String _language = 'test';
+  String _name = ProfileInformation.name;
+  int _age = ProfileInformation.age;
+  double _stepgoal = FitnessData.NumberOfSteps_goal;
+  double _sleepgoal = FitnessData.HoursOfSleep_goal;
+  String _country = ProfileInformation.CountryOfOrigin;
+  String _language = ProfileInformation.Language;
   int _selectedIndex = 4;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the state variables with the provided userData
+    setState(() {
+      _name = ProfileInformation.name;
+      _age = ProfileInformation.age;
+      _stepgoal = FitnessData.NumberOfSteps_goal;
+      _sleepgoal = FitnessData.HoursOfSleep_goal;
+      _country = ProfileInformation.CountryOfOrigin;
+      _language = ProfileInformation.Language;
+    });
+    print('Welcome');
+  }
 
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
