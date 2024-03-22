@@ -53,8 +53,8 @@ class EducationView extends StatelessWidget {
                                   height: 74,
                                   child: AspectRatio(
                                     aspectRatio: 1.714,
-                                    child: Image.asset(
-                                        "assets/fitness_app/back.png"),
+                                    //child: Image.asset(
+                                      //  "../assets/happy.jpeg"),
                                   ),
                                 ),
                               ),
@@ -117,7 +117,7 @@ class EducationView extends StatelessWidget {
                         child: SizedBox(
                           width: 110,
                           height: 110,
-                          child: Image.asset("assets/fitness_app/runner.png"),
+                          // child: Image.asset("../assets/happy.jpeg"),
                         ),
                       )
                     ],

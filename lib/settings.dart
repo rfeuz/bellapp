@@ -17,7 +17,7 @@ class _Settings extends State<Settings> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    FitnessAppHomeScreen(), // Placeholder for homepage
     Challenges(),
     Text('Settings'),
   ];
@@ -41,7 +41,7 @@ class _Settings extends State<Settings> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => FitnessAppHomeScreen()),
           );
           break;
         case 3:
@@ -234,7 +234,7 @@ class _ProfilePageState extends State<ProfilePage> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    FitnessAppHomeScreen(), // Placeholder for homepage
     Challenges(),
     Text('Settings'),
   ];
@@ -258,7 +258,7 @@ class _ProfilePageState extends State<ProfilePage> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => FitnessAppHomeScreen()),
           );
           break;
         case 3:
@@ -419,7 +419,7 @@ class _HelpPage extends State<HelpPage> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    FitnessAppHomeScreen(), // Placeholder for homepage
     Challenges(),
     Text('Settings'),
   ];
@@ -443,7 +443,7 @@ class _HelpPage extends State<HelpPage> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => FitnessAppHomeScreen()),
           );
           break;
         case 3:
@@ -563,7 +563,7 @@ class _UsefulResourcesPage extends State<UsefulResourcesPage> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    FitnessAppHomeScreen(), // Placeholder for homepage
     Challenges(),
     Text('Settings'),
   ];
@@ -586,7 +586,7 @@ class _UsefulResourcesPage extends State<UsefulResourcesPage> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => FitnessAppHomeScreen()),
           );
           break;
         case 3:

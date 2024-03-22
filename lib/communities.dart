@@ -1,9 +1,10 @@
+// import 'package:bellapp/ui_format/avatar_View.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'survey.dart';
 import 'settings.dart';
 import 'challenges.dart';
-import 'ui_format/education_view.dart';
+import 'ui_format/avatar_view.dart';
 import 'ui_format/theme.dart';
 
 
@@ -58,10 +59,10 @@ class _CommunitiesState extends State<Communities>
   }
 
   void addAllListData() {
-    const int count = 3;
+    const int count = 5;
 
     listViews.add(
-      EducationView(
+      AvatarView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
@@ -70,7 +71,7 @@ class _CommunitiesState extends State<Communities>
       ),
     );
     listViews.add(
-      EducationView(
+      AvatarView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController!,
             curve:
@@ -85,11 +86,12 @@ class _CommunitiesState extends State<Communities>
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Text('Communities'),
-    MyHomePage(), // Placeholder for homepage
+    FitnessAppHomeScreen(), // Placeholder for homepage
     Challenges(),
     Settings(),
   ];
 
+  /***
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -109,7 +111,7 @@ class _CommunitiesState extends State<Communities>
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => FitnessAppHomeScreen()),
           );
           break;
         case 3:
@@ -127,6 +129,7 @@ class _CommunitiesState extends State<Communities>
       }
     });
   }
+      ***/
 
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 50));
@@ -141,6 +144,7 @@ class _CommunitiesState extends State<Communities>
         backgroundColor: Colors.transparent,
         body: Stack(
           children: <Widget>[
+            getMainListViewUI(),
             getAppBarUI(),
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
@@ -174,12 +178,38 @@ class _CommunitiesState extends State<Communities>
             ),
           ],
           currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+          // onTap: (){},
         ),
       ),
     );
   }
 
+  Widget getMainListViewUI() {
+    return FutureBuilder<bool>(
+      future: getData(),
+      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+        if (!snapshot.hasData) {
+          return const SizedBox();
+        } else {
+          return ListView.builder(
+            controller: scrollController,
+            padding: EdgeInsets.only(
+              top: AppBar().preferredSize.height +
+                  MediaQuery.of(context).padding.top +
+                  24,
+              bottom: 62 + MediaQuery.of(context).padding.bottom,
+            ),
+            itemCount: listViews.length,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) {
+              widget.animationController?.forward();
+              return listViews[index];
+            },
+          );
+        }
+      },
+    );
+  }
 
 
   Widget getAppBarUI() {

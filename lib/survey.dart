@@ -24,7 +24,7 @@ class _SurveyState extends State<Survey> {
   static List<Widget> _widgetOptions = <Widget>[
     Text('Survey'),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    FitnessAppHomeScreen(), // Placeholder for homepage
     Challenges(),
     Settings(),
   ];
@@ -62,7 +62,7 @@ class _SurveyState extends State<Survey> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => FitnessAppHomeScreen()),
           );
           break;
         case 3:
@@ -183,7 +183,7 @@ class _SurveyState extends State<Survey> {
                 // Navigate to the second page
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                  MaterialPageRoute(builder: (context) => FitnessAppHomeScreen()),
                 );
               },
 

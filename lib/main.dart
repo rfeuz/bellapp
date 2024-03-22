@@ -39,20 +39,15 @@ class FitnessAppHomeScreen extends StatefulWidget {
 class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  List<TabIconData> tabIconsList = TabIconData.tabIconsList;
   Widget tabBody = Container(
     color: FitnessAppTheme.background,
   );
 
   @override
   void initState() {
-    tabIconsList.forEach((TabIconData tab) {
-      tab.isSelected = false;
-    });
-    tabIconsList[0].isSelected = true;
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = EducationScreen(animationController: animationController);
+    tabBody = Communities(animationController: animationController);
     super.initState();
   }
 
@@ -60,6 +55,11 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
   void dispose() {
     animationController?.dispose();
     super.dispose();
+  }
+
+  Future<bool> getData() async {
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    return true;
   }
 
   @override
@@ -71,9 +71,17 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
         body: FutureBuilder<bool>(
           future: getData(),
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (!snapshot.hasData) {
-              return const SizedBox();
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              // Show loading indicator or placeholder while waiting for data
+              return CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              // Handle error case
+              return Text('Error: ${snapshot.error}');
+            } else if (!snapshot.hasData || snapshot.data == null) {
+              // Handle case where data is null
+              return Text('Data is null');
             } else {
+              // Data is available, proceed with rendering
               return Stack(
                 children: <Widget>[
                   tabBody,
@@ -87,44 +95,6 @@ class _FitnessAppHomeScreenState extends State<FitnessAppHomeScreen>
     );
   }
 
-  Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
-    return true;
-  }
-  Widget bottomBar() {
-    return Column(
-      children: <Widget>[
-        const Expanded(
-          child: SizedBox(),
-        ),
-        BottomBarView(
-          tabIconsList: tabIconsList,
-          addClick: () {},
-          changeIndex: (int index) {
-            if (index == 0 || index == 2) {
-              animationController?.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  tabBody =
-                      Communities();
-                });
-              });
-            } else if (index == 1 || index == 3) {
-              animationController?.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  tabBody =
-                      Communities();
-                });
-              });
-            }
-          },
-        ),
-      ],
-    );
-  }
+
+
 }
