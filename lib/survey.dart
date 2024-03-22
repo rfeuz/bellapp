@@ -178,6 +178,7 @@ class _SurveyState extends State<Survey> {
             ElevatedButton(
               onPressed: () {
                 output_to_data();
+                GlobalFlags.DailySurvey = true;
                 // Navigate to the second page
                 Navigator.push(
                   context,
@@ -222,7 +223,9 @@ class _SurveyState extends State<Survey> {
         ),
 
       );
+
     } else {
+
       return Scaffold(
         appBar: AppBar(
           title: Text('Daily Survey'),
