@@ -33,11 +33,12 @@ class ProfileInformation {
   static String Language = 'German';
   static String Location = 'Betrieb Geflügel Zell';
   static List<String> MyDiary = ['', '', '', '', '', '', '', '', '', ''];
+  static int DiaryIndex = 0;
 }
 
 class GlobalFlags {
   static bool FirstLogin = true;
-  static bool DailySurvey = false;
+  static bool DailySurvey = true;
 }
 
 class GlobalScores {
