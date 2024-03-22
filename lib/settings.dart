@@ -4,6 +4,7 @@ import 'main.dart';
 import 'communities.dart';
 import 'survey.dart';
 import 'challenges.dart';
+
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
@@ -11,13 +12,14 @@ class Settings extends StatefulWidget {
   _Settings createState() => _Settings();
 }
 
+
 class _Settings extends State<Settings> {
   int _selectedIndex = 4;
 
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    MyHomePage(title: 'Home'), // Placeholder for homepage
     Challenges(),
     Text('Settings'),
   ];
@@ -41,7 +43,7 @@ class _Settings extends State<Settings> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
           );
           break;
         case 3:
@@ -64,7 +66,7 @@ class _Settings extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text('Settings'),
         backgroundColor:
             Colors.green, // Setting background color of the app bar to green
       ),
@@ -80,6 +82,7 @@ class _Settings extends State<Settings> {
                   context,
                   MaterialPageRoute(builder: (context) => ProfilePage()),
                 );
+                // Navigate to the 'Habits' page
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(vertical: 20.0),
@@ -87,29 +90,8 @@ class _Settings extends State<Settings> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('   Personal Information',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Icon(Icons.arrow_forward),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 20.0),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('   My Diary',
+                  Text(
+                    '   Profile',
                     textAlign: TextAlign.left,
                     style: TextStyle(fontSize: 18),
                   ),
@@ -142,6 +124,7 @@ class _Settings extends State<Settings> {
                 ],
               ),
             ),
+
             SizedBox(height: 20),
             // Slider for help
             ElevatedButton(
@@ -202,6 +185,7 @@ class _Settings extends State<Settings> {
   }
 }
 
+
 class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -234,7 +218,7 @@ class _ProfilePageState extends State<ProfilePage> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    MyHomePage(title: 'Home'), // Placeholder for homepage
     Challenges(),
     Text('Settings'),
   ];
@@ -258,7 +242,7 @@ class _ProfilePageState extends State<ProfilePage> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
           );
           break;
         case 3:
@@ -408,6 +392,8 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
+
+
 class HelpPage extends StatefulWidget {
   @override
   _HelpPage createState() => _HelpPage();
@@ -419,10 +405,11 @@ class _HelpPage extends State<HelpPage> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    MyHomePage(title: 'Home'), // Placeholder for homepage
     Challenges(),
     Text('Settings'),
   ];
+
 
   void _onItemTapped(int index) {
     setState(() {
@@ -443,7 +430,7 @@ class _HelpPage extends State<HelpPage> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
           );
           break;
         case 3:
@@ -461,6 +448,7 @@ class _HelpPage extends State<HelpPage> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -553,20 +541,27 @@ class _HelpPage extends State<HelpPage> {
   }
 }
 
+
+
 class UsefulResourcesPage extends StatefulWidget {
   @override
   _UsefulResourcesPage createState() => _UsefulResourcesPage();
 }
 
+
 class _UsefulResourcesPage extends State<UsefulResourcesPage> {
+
   int _selectedIndex = 4;
+
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(), // Placeholder for homepage
+    MyHomePage(title: 'Home'), // Placeholder for homepage
     Challenges(),
     Text('Settings'),
   ];
+
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -586,7 +581,7 @@ class _UsefulResourcesPage extends State<UsefulResourcesPage> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
           );
           break;
         case 3:
@@ -604,6 +599,7 @@ class _UsefulResourcesPage extends State<UsefulResourcesPage> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

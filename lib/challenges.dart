@@ -1,20 +1,11 @@
 // challenges.dart
+
 import 'main.dart';
 import 'communities.dart';
 import 'settings.dart';
 import 'survey.dart';
-import 'package:flutter/material.dart';
-import 'stepchallenge.dart';
 
-class DetailsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Details')),
-      body: Center(child: Text('This is the Details Page')),
-    );
-  }
-}
+import 'package:flutter/material.dart';
 
 class Challenges extends StatefulWidget {
   @override
@@ -28,7 +19,7 @@ class _Challenges extends State<Challenges> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(),
+    MyHomePage(title: 'Home'),
     Text('Survey'),
     Settings(),
   ];
@@ -52,7 +43,7 @@ class _Challenges extends State<Challenges> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
           );
           break;
         case 3:
@@ -78,37 +69,29 @@ class _Challenges extends State<Challenges> {
         title: Text('Challenges'),
       ),
       body: Center(
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => stepchallenge()),
-            );
-          },
-          child: Container(
-            width: 300, // specify the width
-            height: 100, // specify the height
-            decoration: BoxDecoration(
-              color: Colors.blue, // specify the color
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Stepchallenge', // specify the text
-                  style: TextStyle(
-                    color: Colors.white, // specify the text color
-                    fontSize: 20, // specify the text size
-                  ),
+        child: Container(
+          width: 300, // specify the width
+          height: 100, // specify the height
+          decoration: BoxDecoration(
+            color: Colors.blue, // specify the color
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Challenge 1', // specify the text
+                style: TextStyle(
+                  color: Colors.white, // specify the text color
+                  fontSize: 20, // specify the text size
                 ),
-                SizedBox(height: 30), // Add some spacing
-                LinearProgressIndicator(
-                  value: 0.5, // Set the progress here (0.0 to 1.0)
-                  backgroundColor: Colors.white, // Set the background color
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.green), // Set the progress color
-                ),
-              ],
-            ),
+              ),
+              SizedBox(height: 30), // Add some spacing
+              LinearProgressIndicator(
+                value: 0.5, // Set the progress here (0.0 to 1.0)
+                backgroundColor: Colors.white, // Set the background color
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.green), // Set the progress color
+              ),
+            ],
           ),
         ),
       ),
