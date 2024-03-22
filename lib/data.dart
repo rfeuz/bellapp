@@ -38,7 +38,7 @@ class ProfileInformation {
 
 class GlobalFlags {
   static bool FirstLogin = true;
-  static bool DailySurvey = true;
+  static bool DailySurvey = false;
 }
 
 class GlobalScores {
