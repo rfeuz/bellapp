@@ -19,10 +19,17 @@ class _ScoreboardState extends State<Scoreboard> {
 
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
+<<<<<<< Updated upstream:lib/scoreboard.dart
     Communities(),
     MyHomePage(),
     Text('Survey'),
     Settings(),
+=======
+    Text('Communities'),
+    MyHomePage(title: 'Home'), // Placeholder for homepage
+    Challenges(),
+    Profile(),
+>>>>>>> Stashed changes:lib/FirstLogin.dart
   ];
 
 
@@ -57,7 +64,7 @@ class _ScoreboardState extends State<Scoreboard> {
         case 4:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           break;
       }
@@ -107,7 +114,7 @@ class _ScoreboardState extends State<Scoreboard> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,

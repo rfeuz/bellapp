@@ -19,7 +19,7 @@ class _stepchallenge extends State<stepchallenge> {
     Communities(),
     MyHomePage(),
     Text('Survey'),
-    Settings(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
@@ -53,7 +53,7 @@ class _stepchallenge extends State<stepchallenge> {
         case 4:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           break;
       }
@@ -205,7 +205,7 @@ class _stepchallenge extends State<stepchallenge> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,

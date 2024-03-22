@@ -15,6 +15,7 @@ class Communities extends StatefulWidget {
   _CommunitiesState createState() => _CommunitiesState();
 }
 
+<<<<<<< Updated upstream
 class _CommunitiesState extends State<Communities>
   with TickerProviderStateMixin {
     Animation<double>? topBarAnimation;
@@ -80,6 +81,9 @@ class _CommunitiesState extends State<Communities>
     );
   }
 
+=======
+class _Communities extends State<Communities> {
+>>>>>>> Stashed changes
   int _selectedIndex = 1;
 
   static List<Widget> _widgetOptions = <Widget>[
@@ -87,7 +91,7 @@ class _CommunitiesState extends State<Communities>
     Text('Communities'),
     MyHomePage(), // Placeholder for homepage
     Challenges(),
-    Settings(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
@@ -121,7 +125,7 @@ class _CommunitiesState extends State<Communities>
         case 4:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           break;
       }
@@ -135,6 +139,7 @@ class _CommunitiesState extends State<Communities>
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< Updated upstream
     return Container(
       color: FitnessAppTheme.background,
       child: Scaffold(
@@ -314,3 +319,78 @@ class _CommunitiesState extends State<Communities>
 }
 
 
+=======
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Community'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            coloredContainer("Block 1", Colors.green.shade300),
+            SizedBox(height: 25),
+            coloredContainer("Block 2", Colors.green.shade400),
+            SizedBox(height: 25),
+            coloredContainer("Block 3", Colors.green.shade500),
+            SizedBox(height: 25),
+            coloredContainer("Block 4", Colors.green.shade600),
+            SizedBox(height: 25),
+            coloredContainer("Block 5", Colors.green.shade700),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blueGrey,
+        // Change the color here
+        selectedItemColor: Colors.blueAccent,
+        // Change the selected item color here
+        unselectedItemColor: Colors.grey,
+        // Change the unselected item color here
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Survey',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Communities',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Challenges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+  Widget coloredContainer(String title, Color color) {
+    return Container(
+      width: double.infinity,
+      height: 90,
+      decoration: BoxDecoration(
+        color: color,
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+          ),
+        ),
+      ),
+    );
+  }
+}
+>>>>>>> Stashed changes

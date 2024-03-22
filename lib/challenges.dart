@@ -30,7 +30,7 @@ class _Challenges extends State<Challenges> {
     Communities(),
     MyHomePage(),
     Text('Survey'),
-    Settings(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
@@ -64,7 +64,7 @@ class _Challenges extends State<Challenges> {
         case 4:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           break;
       }
@@ -78,6 +78,7 @@ class _Challenges extends State<Challenges> {
         title: Text('Challenges'),
       ),
       body: Center(
+<<<<<<< Updated upstream
         child: InkWell(
           onTap: () {
             Navigator.push(
@@ -100,6 +101,134 @@ class _Challenges extends State<Challenges> {
                     color: Colors.white, // specify the text color
                     fontSize: 20, // specify the text size
                   ),
+=======
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(height: 30),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => stepchallenge()),
+                );
+              },
+              child: Container(
+                width: 300, // Specify the width
+                height: 100, // Specify the height
+                decoration: BoxDecoration(
+                  color: Colors.green, // Specify the color
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'Stepchallenge', // Specify the text
+                      style: TextStyle(
+                      color: Colors.white, // Specify the text color
+                      fontSize: 20, // Specify the text size
+                      ),
+                    ),
+                    Text(
+                      '100 Points', // Specify the text
+                      style: TextStyle(
+                        color: Colors.white, // Specify the text color
+                        fontSize: 16, // Specify the text size
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    LinearProgressIndicator(
+                      value: 0.5, // Set the progress here (0.0 to 1.0)
+                      backgroundColor: Colors.white, // Set the background color
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.red)
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 30), // Add some spacing
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => stepchallenge()),
+                );
+              },
+              child: Container(
+                width: 300, // Specify the width
+                height: 100, // Specify the height
+                decoration: BoxDecoration(
+                  color: Colors.lightGreen, // Specify the color
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      '8 Hours Sleep Challenge', // Specify the text
+                      style: TextStyle(
+                        color: Colors.white, // Specify the text color
+                        fontSize: 20, // Specify the text size
+                      ),
+                    ),
+                    Text(
+                      '88 Points', // Specify the text
+                      style: TextStyle(
+                        color: Colors.white, // Specify the text color
+                        fontSize: 16, // Specify the text size
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    LinearProgressIndicator(
+                        value: 0.05, // Set the progress here (0.0 to 1.0)
+                        backgroundColor: Colors.white, // Set the background color
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.red)
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 40),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => stepchallenge()),
+                );
+              },
+              child: Container(
+                width: 300, // Specify the width
+                height: 100, // Specify the height
+                decoration: BoxDecoration(
+                    color: Color(0xFF234F1E), // Specify the color
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'One Healthy Meal per Day', // Specify the text
+                      style: TextStyle(
+                        color: Colors.white, // Specify the text color
+                        fontSize: 20, // Specify the text size
+                      ),
+                    ),
+                    Text(
+                      '30 Points', // Specify the text
+                      style: TextStyle(
+                        color: Colors.white, // Specify the text color
+                        fontSize: 16, // Specify the text size
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    LinearProgressIndicator(
+                        value: 0.8, // Set the progress here (0.0 to 1.0)
+                        backgroundColor: Colors.white, // Set the background color
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.red)
+                    ),
+                  ],
+>>>>>>> Stashed changes
                 ),
                 SizedBox(height: 30), // Add some spacing
                 LinearProgressIndicator(
@@ -109,7 +238,12 @@ class _Challenges extends State<Challenges> {
                 ),
               ],
             ),
+<<<<<<< Updated upstream
           ),
+=======
+
+          ],
+>>>>>>> Stashed changes
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -135,7 +269,7 @@ class _Challenges extends State<Challenges> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,

@@ -6,12 +6,17 @@ import 'survey.dart';
 import 'challenges.dart';
 import 'package:flutter/material.dart';
 
-class Settings extends StatefulWidget {
+class Profile extends StatefulWidget {
   @override
-  _Settings createState() => _Settings();
+  _Profile createState() => _Profile();
 }
 
+<<<<<<< Updated upstream
 class _Settings extends State<Settings> {
+=======
+
+class _Profile extends State<Profile> {
+>>>>>>> Stashed changes
   int _selectedIndex = 4;
 
   static List<Widget> _widgetOptions = <Widget>[
@@ -19,7 +24,7 @@ class _Settings extends State<Settings> {
     Communities(),
     MyHomePage(), // Placeholder for homepage
     Challenges(),
-    Text('Settings'),
+    Text('Profile'),
   ];
 
   void _onItemTapped(int index) {
@@ -53,7 +58,7 @@ class _Settings extends State<Settings> {
         case 4:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           break;
       }
@@ -87,6 +92,7 @@ class _Settings extends State<Settings> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+<<<<<<< Updated upstream
                   Text('   Personal Information',
                     textAlign: TextAlign.left,
                     style: TextStyle(fontSize: 18),
@@ -110,6 +116,10 @@ class _Settings extends State<Settings> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('   My Diary',
+=======
+                  Text(
+                    '   Your Profile',
+>>>>>>> Stashed changes
                     textAlign: TextAlign.left,
                     style: TextStyle(fontSize: 18),
                   ),
@@ -124,7 +134,7 @@ class _Settings extends State<Settings> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => UsefulResourcesPage()),
+                      builder: (context) => MyDiaryPage()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -134,7 +144,7 @@ class _Settings extends State<Settings> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '   Useful Resources',
+                    '   My Diary',
                     textAlign: TextAlign.left,
                     style: TextStyle(fontSize: 18),
                   ),
@@ -148,7 +158,7 @@ class _Settings extends State<Settings> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HelpPage()),
+                  MaterialPageRoute(builder: (context) => SettingsPage()),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -158,7 +168,7 @@ class _Settings extends State<Settings> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '   Help',
+                    '   Settings',
                     textAlign: TextAlign.left,
                     style: TextStyle(fontSize: 18),
                   ),
@@ -192,7 +202,7 @@ class _Settings extends State<Settings> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -202,6 +212,24 @@ class _Settings extends State<Settings> {
   }
 }
 
+<<<<<<< Updated upstream
+=======
+
+String convertDecimalToTime(double decimalHours) {
+  // Extract hours and minutes
+  int hours = decimalHours.floor();
+  int minutes = ((decimalHours - hours) * 60).round();
+
+  // Construct the time string
+  String timeString = '$hours h';
+  if (minutes > 0) {
+    timeString += ' $minutes min';
+  }
+
+  return timeString;
+}
+
+>>>>>>> Stashed changes
 class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -214,7 +242,9 @@ class _ProfilePageState extends State<ProfilePage> {
   double _sleepgoal = FitnessData.HoursOfSleep_goal;
   String _country = ProfileInformation.CountryOfOrigin;
   String _language = ProfileInformation.Language;
+  String _location = ProfileInformation.Location;
   int _selectedIndex = 4;
+
 
   @override
   void initState() {
@@ -227,8 +257,8 @@ class _ProfilePageState extends State<ProfilePage> {
       _sleepgoal = FitnessData.HoursOfSleep_goal;
       _country = ProfileInformation.CountryOfOrigin;
       _language = ProfileInformation.Language;
+      _location = ProfileInformation.Location;
     });
-    print('Welcome');
   }
 
   static List<Widget> _widgetOptions = <Widget>[
@@ -236,7 +266,7 @@ class _ProfilePageState extends State<ProfilePage> {
     Communities(),
     MyHomePage(), // Placeholder for homepage
     Challenges(),
-    Text('Settings'),
+    Text('Profile'),
   ];
 
   void _onItemTapped(int index) {
@@ -270,7 +300,7 @@ class _ProfilePageState extends State<ProfilePage> {
         case 4:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           break;
       }
@@ -281,7 +311,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text('Your Profile'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -292,7 +322,11 @@ class _ProfilePageState extends State<ProfilePage> {
               onPressed: () {
                 //not defined
               },
-              child: Text(_name),
+              child: Text(
+                _name,
+                style: TextStyle(
+                  fontSize: 18.0),
+              ),
             ),
             SizedBox(height: 20),
 
@@ -303,7 +337,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Text('Age'), // Hardcoded text on the left side
                   Text(
-                    _age.toString(),
+                    '${_age.toString()}J.',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ), // Variable-based text on the right side
                 ],
@@ -332,6 +366,22 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text('Location'), // Hardcoded text on the left side
+                  Text(
+                    _location.toString(),
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ), // Variable-based text on the right side
+                ],
+              ),
+            ),
+
+            SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   Text('Language'), // Hardcoded text on the left side
                   Text(
                     _language,
@@ -350,7 +400,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   Text('Your Stepgoal'), // Hardcoded text on the left side
                   Text(
-                    _stepgoal.toString(),
+                    '${_stepgoal.toInt()} steps',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ), // Variable-based text on the right side
                 ],
@@ -363,9 +413,9 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Your Sleepgoal'), // Hardcoded text on the left side
+                  Text('Your Sleepgoal in hours'), // Hardcoded text on the left side
                   Text(
-                    _sleepgoal.toString(),
+                    convertDecimalToTime(_sleepgoal),
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ), // Variable-based text on the right side
                 ],
@@ -398,7 +448,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -408,20 +458,37 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
+<<<<<<< Updated upstream
 class HelpPage extends StatefulWidget {
+=======
+
+
+class MyDiaryPage extends StatefulWidget {
+>>>>>>> Stashed changes
   @override
-  _HelpPage createState() => _HelpPage();
+  _MyDiaryPage createState() => _MyDiaryPage();
 }
 
-class _HelpPage extends State<HelpPage> {
+class _MyDiaryPage extends State<MyDiaryPage> {
   int _selectedIndex = 4;
+  List<String> _mydiary = ProfileInformation.MyDiary;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the state variables with the provided userData
+
+    setState(() {
+      _mydiary = ProfileInformation.MyDiary;
+    });
+  }
 
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
     MyHomePage(), // Placeholder for homepage
     Challenges(),
-    Text('Settings'),
+    Text('Profile'),
   ];
 
   void _onItemTapped(int index) {
@@ -455,7 +522,7 @@ class _HelpPage extends State<HelpPage> {
         case 4:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Settings()),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           break;
       }
@@ -465,7 +532,153 @@ class _HelpPage extends State<HelpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Help'),
+        title: Text('Your Diary'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Here is your personal Mental Health Diary of the last few days:',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 15.0, // Adjust the font size as needed
+                // You can add more text styles here such as fontWeight, color, etc.
+              ),
+            ),
+            SizedBox(height: 10),
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  ListTile(
+                      leading: Icon(Icons.fiber_manual_record, size: 15), // Use any icon or bullet point icon you prefer
+                      title: Text('${_mydiary[0]}'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.fiber_manual_record, size: 15),
+                    title: Text('${_mydiary[1]}'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.fiber_manual_record, size: 15),
+                    title: Text('${_mydiary[2]}'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.fiber_manual_record, size: 15),
+                    title: Text('${_mydiary[3]}'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.fiber_manual_record, size: 15),
+                    title: Text('${_mydiary[4]}'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.fiber_manual_record, size: 15),
+                    title: Text('${_mydiary[5]}'),
+                  ),
+                  // Add more list items as needed
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blueGrey, // Change the color here
+        selectedItemColor: Colors.blueAccent, // Change the selected item color here
+        unselectedItemColor: Colors.grey, // Change the unselected item color here
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment),
+            label: 'Survey',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Communities',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Challenges',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+
+
+class SettingsPage extends StatefulWidget {
+  @override
+  _SettingsPage createState() => _SettingsPage();
+}
+
+
+class _SettingsPage extends State<SettingsPage> {
+
+  int _selectedIndex = 4;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    Survey(),
+    Communities(),
+    MyHomePage(title: 'Home'), // Placeholder for homepage
+    Challenges(),
+    Text('Profile'),
+  ];
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (_selectedIndex) {
+        case 0:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Survey()),
+          );
+          break;
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Communities()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyHomePage(title: 'Home')),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Challenges()),
+          );
+          break;
+        case 4:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Profile()),
+          );
+          break;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -485,7 +698,7 @@ class _HelpPage extends State<HelpPage> {
                 onPressed: () {
                   //not defined
                 },
-                child: Text('#41 000 00 00')),
+                child: Text('+41 123 45 67')),
             SizedBox(height: 20),
             TextButton(
               style: ButtonStyle(
@@ -543,6 +756,7 @@ class _HelpPage extends State<HelpPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
+<<<<<<< Updated upstream
             label: 'Settings',
           ),
         ],
@@ -687,6 +901,9 @@ class _UsefulResourcesPage extends State<UsefulResourcesPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
+=======
+            label: 'Profile',
+>>>>>>> Stashed changes
           ),
         ],
         currentIndex: _selectedIndex,
