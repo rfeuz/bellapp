@@ -28,7 +28,7 @@ class _Challenges extends State<Challenges> {
   static List<Widget> _widgetOptions = <Widget>[
     Survey(),
     Communities(),
-    MyHomePage(),
+    FitnessAppHomeScreen(),
     Text('Survey'),
     Settings(),
   ];
@@ -52,7 +52,7 @@ class _Challenges extends State<Challenges> {
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
+            MaterialPageRoute(builder: (context) => FitnessAppHomeScreen()),
           );
           break;
         case 3:
