@@ -21,18 +21,19 @@ class ScoreboardPage extends StatelessWidget {
         title: Text('Scoreboard'),
       ),
       body: ListView.builder(
-        itemCount: playerNames.length, // Use length of playerNames list for item count
+        itemCount: playerNames.length,
         itemBuilder: (context, index) {
-          return ListTile(
-
-            leading: Text(
-              '${index +1}.  ${playerNames[index]}',
-
-              style: TextStyle(fontSize: 25.0), // Change font size here
-            ),
-            trailing: Text(
-              '${playerScores[index]}',
-              style: TextStyle(fontSize: 25.0), // Change font size here
+          return Container(
+            color: index % 2 == 0 ? Colors.green[50] : Colors.green[100],
+            child: ListTile(
+              leading: Text(
+                '${index + 1}. ${playerNames[index]}',
+                style: TextStyle(fontSize: 25.0),
+              ),
+              trailing: Text(
+                '${playerScores[index]}',
+                style: TextStyle(fontSize: 25.0),
+              ),
             ),
           );
         },
