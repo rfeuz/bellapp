@@ -59,10 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     // Initialize the state variables with the provided userData
     if (GlobalFlags.FirstLogin == true) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Communities()),
-      );
+      print('Test');
     }
     setState(() {
       _selectedIndex = 2;
