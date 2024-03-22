@@ -92,7 +92,7 @@ class _Challenges extends State<Challenges> {
                 width: 300, // Specify the width
                 height: 100, // Specify the height
                 decoration: BoxDecoration(
-                  color: Colors.green, // Specify the color
+                  color: Colors.green.shade800, // Specify the color
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -10,6 +10,26 @@ class stepchallenge extends StatefulWidget {
   _stepchallenge createState() => _stepchallenge();
 }
 
+class ScoreboardPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Scoreboard'),
+      ),
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: Text('Player ${index + 1}'),
+            trailing: Text('${(index + 1) * 100} pts'),
+          );
+        },
+      ),
+    );
+  }
+}
+
 class _stepchallenge extends State<stepchallenge> {
 
   int _selectedIndex = 3;
@@ -74,14 +94,14 @@ class _stepchallenge extends State<stepchallenge> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => stepchallenge()),
+                  MaterialPageRoute(builder: (context) => ScoreboardPage()),
                 );
               },
               child: Container(
                 width: 300, // Specify the width
                 height: 70, // Specify the height
                 decoration: BoxDecoration(
-                  color: Colors.green, // Specify the color
+                  color: Colors.green.shade800, // Specify the color
                 ),
                 child: Center(
                   child: Text(
@@ -99,7 +119,7 @@ class _stepchallenge extends State<stepchallenge> {
               width: 300, // specify the width
               height: 70, // specify the height
               decoration: BoxDecoration(
-                color: Colors.green, // specify the color
+                color: Colors.green.shade600, // specify the color
               ),
               child: Center(
                 child: Text(
@@ -116,7 +136,7 @@ class _stepchallenge extends State<stepchallenge> {
               width: 300, // specify the width
               height: 70, // specify the height
               decoration: BoxDecoration(
-                color: Colors.green, // specify the color
+                color: Colors.green.shade400, // specify the color
               ),
               child: Center(
                 child: Text(
@@ -133,7 +153,7 @@ class _stepchallenge extends State<stepchallenge> {
               width: 300, // specify the width
               height: 70, // specify the height
               decoration: BoxDecoration(
-                color: Colors.green, // specify the color
+                color: Colors.green.shade600, // specify the color
               ),
               child: Center(
                 child: Text(
@@ -150,7 +170,7 @@ class _stepchallenge extends State<stepchallenge> {
               width: 300, // specify the width
               height: 70, // specify the height
               decoration: BoxDecoration(
-                color: Colors.green, // specify the color
+                color: Colors.green.shade800, // specify the color
               ),
               child: Center(
                 child: Text(
@@ -167,7 +187,7 @@ class _stepchallenge extends State<stepchallenge> {
               width: 300, // specify the width
               height: 70, // specify the height
               decoration: BoxDecoration(
-                color: Colors.green, // specify the color
+                color: Colors.green.shade900, // specify the color
               ),
               child: Center(
                 child: Text(

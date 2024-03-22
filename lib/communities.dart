@@ -65,15 +65,31 @@ class _Communities extends State<Communities> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('New Screen'),
+        title: Text('Community'),
       ),
-      body: Center(
-        child: Text('This is the new screen.'),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            coloredContainer("Block 1", Colors.green.shade300),
+            SizedBox(height: 25),
+            coloredContainer("Block 2", Colors.green.shade400),
+            SizedBox(height: 25),
+            coloredContainer("Block 3", Colors.green.shade500),
+            SizedBox(height: 25),
+            coloredContainer("Block 4", Colors.green.shade600),
+            SizedBox(height: 25),
+            coloredContainer("Block 5", Colors.green.shade700),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blueGrey, // Change the color here
-        selectedItemColor: Colors.blueAccent, // Change the selected item color here
-        unselectedItemColor: Colors.grey, // Change the unselected item color here
+        backgroundColor: Colors.blueGrey,
+        // Change the color here
+        selectedItemColor: Colors.blueAccent,
+        // Change the selected item color here
+        unselectedItemColor: Colors.grey,
+        // Change the unselected item color here
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.assignment),
@@ -98,6 +114,24 @@ class _Communities extends State<Communities> {
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+      ),
+    );
+  }
+  Widget coloredContainer(String title, Color color) {
+    return Container(
+      width: double.infinity,
+      height: 90,
+      decoration: BoxDecoration(
+        color: color,
+      ),
+      child: Center(
+        child: Text(
+          title,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 30,
+          ),
+        ),
       ),
     );
   }
