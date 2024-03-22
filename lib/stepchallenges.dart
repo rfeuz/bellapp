@@ -11,6 +11,9 @@ class stepchallenge extends StatefulWidget {
 }
 
 class ScoreboardPage extends StatelessWidget {
+  final List<String> playerNames = ['John', 'Kim', 'Liam', 'Emma', 'Noah','Louis', 'Francesca', 'David', 'Noelle'];
+  final List<int> playerScores = [2881825, 2832540, 2327408, 2250825, 2182354, 1732627, 1428626, 1386464, 1147986];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,17 +21,26 @@ class ScoreboardPage extends StatelessWidget {
         title: Text('Scoreboard'),
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: playerNames.length, // Use length of playerNames list for item count
         itemBuilder: (context, index) {
           return ListTile(
-            leading: Text('Player ${index + 1}'),
-            trailing: Text('${(index + 1) * 100} pts'),
+
+            leading: Text(
+              '${index +1}.  ${playerNames[index]}',
+
+              style: TextStyle(fontSize: 25.0), // Change font size here
+            ),
+            trailing: Text(
+              '${playerScores[index]}',
+              style: TextStyle(fontSize: 25.0), // Change font size here
+            ),
           );
         },
       ),
     );
   }
 }
+
 
 class _stepchallenge extends State<stepchallenge> {
 
