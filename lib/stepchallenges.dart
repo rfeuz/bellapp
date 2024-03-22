@@ -1,27 +1,16 @@
-// challenges.dart
+import 'package:flutter/material.dart';
 import 'main.dart';
 import 'communities.dart';
 import 'settings.dart';
+import 'challenges.dart';
 import 'survey.dart';
-import 'package:flutter/material.dart';
-import 'stepchallenges.dart';
 
-class DetailsPage extends StatelessWidget {
+class stepchallenge extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Details')),
-      body: Center(child: Text('This is the Details Page')),
-    );
-  }
+  _stepchallenge createState() => _stepchallenge();
 }
 
-class Challenges extends StatefulWidget {
-  @override
-  _Challenges createState() => _Challenges();
-}
-
-class _Challenges extends State<Challenges> {
+class _stepchallenge extends State<stepchallenge> {
 
   int _selectedIndex = 3;
 
@@ -75,7 +64,7 @@ class _Challenges extends State<Challenges> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Challenges'),
+        title: Text('Stepchallenge'),
       ),
       body: Center(
         child: Column(
@@ -90,49 +79,106 @@ class _Challenges extends State<Challenges> {
               },
               child: Container(
                 width: 300, // Specify the width
-                height: 100, // Specify the height
+                height: 70, // Specify the height
                 decoration: BoxDecoration(
                   color: Colors.green, // Specify the color
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Stepchallenge', // Specify the text
-                      style: TextStyle(
-                      color: Colors.white, // Specify the text color
+                child: Center(
+                  child: Text(
+                    'total', // Specify the text
+                    style: TextStyle(
+                      color: Colors.black, // Specify the text color
                       fontSize: 30, // Specify the text size
-                      ),
                     ),
-                    SizedBox(height: 30),
-                    LinearProgressIndicator(
-                      value: 0.5, // Set the progress here (0.0 to 1.0)
-                      backgroundColor: Colors.white, // Set the background color
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.red)
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),
             SizedBox(height: 30), // Add some spacing
             Container(
               width: 300, // specify the width
-              height: 100, // specify the height
+              height: 70, // specify the height
               decoration: BoxDecoration(
                 color: Colors.green, // specify the color
               ),
               child: Center(
                 child: Text(
-                  '8h sleeping challenge', // specify the text
+                  'monthly', // specify the text
                   style: TextStyle(
-                    color: Colors.white, // specify the text color
+                    color: Colors.black, // specify the text color
                     fontSize: 30, // specify the text size
                   ),
                 ),
               ),
             ),
             SizedBox(height: 30), // Add some spacing
-
+            Container(
+              width: 300, // specify the width
+              height: 70, // specify the height
+              decoration: BoxDecoration(
+                color: Colors.green, // specify the color
+              ),
+              child: Center(
+                child: Text(
+                  'daily', // specify the text
+                  style: TextStyle(
+                    color: Colors.black, // specify the text color
+                    fontSize: 30, // specify the text size
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 30), // Add some spacing
+            Container(
+              width: 300, // specify the width
+              height: 70, // specify the height
+              decoration: BoxDecoration(
+                color: Colors.green, // specify the color
+              ),
+              child: Center(
+                child: Text(
+                  'internal location', // specify the text
+                  style: TextStyle(
+                    color: Colors.black, // specify the text color
+                    fontSize: 30, // specify the text size
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 30), // Add some spacing
+            Container(
+              width: 300, // specify the width
+              height: 70, // specify the height
+              decoration: BoxDecoration(
+                color: Colors.green, // specify the color
+              ),
+              child: Center(
+                child: Text(
+                  'Country battle', // specify the text
+                  style: TextStyle(
+                    color: Colors.black, // specify the text color
+                    fontSize: 30, // specify the text size
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 30), // Add some spacing
+            Container(
+              width: 300, // specify the width
+              height: 70, // specify the height
+              decoration: BoxDecoration(
+                color: Colors.green, // specify the color
+              ),
+              child: Center(
+                child: Text(
+                  'Age battle', // specify the text
+                  style: TextStyle(
+                    color: Colors.black, // specify the text color
+                    fontSize: 30, // specify the text size
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -168,3 +214,4 @@ class _Challenges extends State<Challenges> {
     );
   }
 }
+
